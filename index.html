@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Muybridged</title>
+  <style>
+    #content {
+      white-space: nowrap;
+    }
+
+    .image {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="content"></div>
+  <script>
+    const images = ['image1.png', 'image2.png', 'image3.png', 'image4.png'];
+
+    for (let i = 0; i < 100; i++) {
+      const randomIndex = Math.floor(Math.random() * images.length);
+
+      // Create a new div element to hold the image
+      const div = document.createElement('div');
+      div.classList.add('image'); // add the "image" class for styling
+
+      // Add the random image to the div
+      const img = document.createElement('img');
+      img.src = images[randomIndex];
+      div.appendChild(img);
+
+      // Add the div to the page
+      document.getElementById('content').appendChild(div);
+    }
+  </script>
+</body>
+</html>
