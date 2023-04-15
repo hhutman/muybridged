@@ -3,35 +3,75 @@
 <head>
   <title>Muybridged</title>
   <style>
+    body {
+      background-color: #b82c2c; /* replace with your desired color */
+    }
+
     #content {
       white-space: nowrap;
+      overflow-x: scroll;
     }
 
     .image {
       display: inline-block;
       margin-right: 10px;
     }
+
+    
   </style>
 </head>
 <body>
+
+  
+  <input type="range" id="speedRange" min="1" max="10" value="5">
   <div id="content"></div>
+  <button id="startButton">Start Scrolling</button>
+  <button id="stopButton">Stop Scrolling</button>
+
   <script>
-    const images = ['image1.png', 'image2.png', 'image3.png', 'image4.png'];
+    const images = ['image1.png', 'image2.png', 'image3.png','image4.png', 
+    'image5.png', 'image6.png', 'image7.png', 'image8.png'];
 
-    for (let i = 0; i < 100; i++) {
+    const speedRange = document.getElementById('speedRange');
+    const content = document.getElementById('content');
+    const startButton = document.getElementById('startButton');
+    const stopButton = document.getElementById('stopButton');
+    let scrollSpeed = 500;
+    let scrollInterval = null;
+    let isScrolling = false;
+
+    // Update the scroll speed when the range input value changes
+    speedRange.addEventListener('input', (event) => {
+      scrollSpeed = parseInt(event.target.value);
+    });
+
+    // Start scrolling
+    startButton.addEventListener('click', () => {
+      if (!isScrolling) {
+        isScrolling = true;
+        scrollInterval = setInterval(() => {
+          content.scrollLeft += scrollSpeed;
+        }, 5);
+      }
+    });
+
+    // Stop scrolling
+    stopButton.addEventListener('click', () => {
+      if (isScrolling) {
+        isScrolling = false;
+        clearInterval(scrollInterval);
+      }
+    });
+
+    // Add images to the content
+    for (let i = 0; i < 100000; i++) {
       const randomIndex = Math.floor(Math.random() * images.length);
-
-      // Create a new div element to hold the image
       const div = document.createElement('div');
-      div.classList.add('image'); // add the "image" class for styling
-
-      // Add the random image to the div
+      div.classList.add('image');
       const img = document.createElement('img');
       img.src = images[randomIndex];
       div.appendChild(img);
-
-      // Add the div to the page
-      document.getElementById('content').appendChild(div);
+      content.appendChild(div);
     }
   </script>
 </body>
