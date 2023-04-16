@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <img id="red-image" src="image9.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.0/anime.min.js"></script>
+   
   <title>Muybridged</title>
   <style>
     body {
-      background-color: #b82c2c; 
+      background-color: #b82c2c;
+      margin-top:-400px; 
     }
 
     #content {
@@ -19,47 +23,19 @@
       margin-right: 10px;
     }
    
-   /* .quote-container {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-       
-        width: 340px;
-        height: 250px;
-        background-color: lightpink;
-        padding: 10px;
-        box-sizing: border-box;
-        overflow: hidden;
-      }
-
-      .quote {
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        color: black;
-        animation: rotate-quotes 10s linear infinite;
-      }
-
-      @keyframes rotate-quotes {
-        0% { transform: translateY(0); }
-        20% { transform: translateY(-50px); }
-        40% { transform: translateY(-100px); }
-        60% { transform: translateY(-150px); }
-        80% { transform: translateY(-200px); }
-        100% { transform: translateY(-250px); }
-     
-*/
     
   </style>
 </head>
 <body>
- <!-- <div class="quote-container">
-    <div class="quote"></div>
-  </div>>-->
-  
+
+  <div style="margin-left: 50px;">
   <input type="range" id="speedRange" min="1" max="10" value="5">
+</div>
   <div id="content"></div>
+  <div style="margin-left:50px;">
   <button id="startButton">Start Scrolling</button>
   <button id="stopButton">Stop Scrolling</button>
+</div>
 
   <script>
     const images = ['image1.png', 'image2.png', 'image3.png','image4.png', 
@@ -110,23 +86,20 @@
       content.appendChild(div);
     }
 
-    const quotes = [
-        "I found god in myself and I loved her fiercely",
-        "Quote 2",
-        "Quote 3",
-        "Quote 4"
-      ];
-
-      const quoteElement = document.querySelector('.quote');
-
-      function rotateQuotes() {
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        const randomQuote = quotes[randomIndex];
-        quoteElement.textContent = randomQuote;
-      }
-
-      rotateQuotes();
-      setInterval(rotateQuotes, 10000);
+ 
+    
+    // Target the red image using its ID
+    const redImage = document.querySelector("#red-image");
+  
+    // Define the animation properties
+    const redAnimation = anime({
+      targets: redImage,
+      translateY: 600, // Move the image 100 pixels down
+      translateX:800,
+        height:400,
+      duration: 1000, // Animation duration in milliseconds
+      easing: "easeOutElastic" // Animation easing function
+    });
   </script>
 </body>
 </html>
