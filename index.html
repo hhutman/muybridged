@@ -10,53 +10,25 @@
     #content {
       white-space: nowrap;
       overflow-x: scroll;
+      height: 140px;
     }
 
-    
 
     .image {
       display: inline-block;
       margin-right: 10px;
     }
+
+    
    
-   /* .quote-container {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-       
-        width: 340px;
-        height: 250px;
-        background-color: lightpink;
-        padding: 10px;
-        box-sizing: border-box;
-        overflow: hidden;
-      }
-
-      .quote {
-        font-family: Arial, sans-serif;
-        font-size: 20px;
-        color: black;
-        animation: rotate-quotes 10s linear infinite;
-      }
-
-      @keyframes rotate-quotes {
-        0% { transform: translateY(0); }
-        20% { transform: translateY(-50px); }
-        40% { transform: translateY(-100px); }
-        60% { transform: translateY(-150px); }
-        80% { transform: translateY(-200px); }
-        100% { transform: translateY(-250px); }
-     
-*/
+ 
     
   </style>
 </head>
 <body>
- <!-- <div class="quote-container">
-    <div class="quote"></div>
-  </div>>-->
+
   
-  <input type="range" id="speedRange" min="1" max="10" value="5">
+  <input type="range" id="speedRange" min="1" max="10" value="5" margin-left="50%" inline-size="300px">
   <div id="content"></div>
   <button id="startButton">Start Scrolling</button>
   <button id="stopButton">Stop Scrolling</button>
@@ -69,7 +41,7 @@
     const content = document.getElementById('content');
     const startButton = document.getElementById('startButton');
     const stopButton = document.getElementById('stopButton');
-    let scrollSpeed = 500;
+    let scrollSpeed = 100;
     let scrollInterval = null;
     let isScrolling = false;
 
@@ -110,23 +82,7 @@
       content.appendChild(div);
     }
 
-    const quotes = [
-        "I found god in myself and I loved her fiercely",
-        "Quote 2",
-        "Quote 3",
-        "Quote 4"
-      ];
-
-      const quoteElement = document.querySelector('.quote');
-
-      function rotateQuotes() {
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        const randomQuote = quotes[randomIndex];
-        quoteElement.textContent = randomQuote;
-      }
-
-      rotateQuotes();
-      setInterval(rotateQuotes, 10000);
+ 
   </script>
 </body>
 </html>
